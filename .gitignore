@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# Output directory
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# VS Code settings (optional)
+.vscode/
+
+# Environment files (if you use them later)
+.env
+.env.*
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Electron build artifacts (if packaging later)
+out/
+build/
+release/
