@@ -1,21 +1,46 @@
 {
   "name": "electron-app",
-  "version": "1.0.0",
+  "version": "1.0.8",
   "description": "electron app sandbox",
   "main": "dist/main.js",
   "scripts": {
-    "build": "tsc",
-    "start": "npm run build && electron ."
+    "copy-assets": "copyfiles src/index.html dist/",
+    "build": "tsc && npm run copy-assets",
+    "start": "npm run build && electron .",
+    "dist-local": "npm run build && electron-builder --publish never",
+    "dist-publish": "npm run build && electron-builder --publish always"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron": "^38.0.0"
+    "electron-updater": "^6.6.2"
   },
   "devDependencies": {
-    "@types/electron": "^1.4.38",
     "@types/node": "^24.3.1",
+    "copyfiles": "^2.4.1",
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.12",
     "typescript": "^5.9.2"
+  },
+  "build": {
+    "appId": "com.example.autoupdateapp",
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "JeffreyHsieh",
+      "repo": "electron-app"
+    }
+  },
+    "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "installerWeb": true
   }
 }
